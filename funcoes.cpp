@@ -26,7 +26,7 @@ void menu()
         if (op == 3)
             menu_COPOM();
         if (op == 4)
-            printf("Menu 4");
+            login();
         if (op == 5)
             printf("Menu 5");
         if (op == 6)
@@ -85,46 +85,44 @@ void menu_login_viatura()
                 {
                     printf("Viatura encontrada\n");
                     break;
-            
                 }
-                else{
+                else
+                {
                     printf("Viatura não é do tipo correto\n");
                 }
             }
-            
         }
-            printf("\n");
-            printf("Quantidade de PMs: ");
-            scanf("%d", &qtd_pms);
-            printf("\n");
-            printf("         SPM - Viatura Login          ");
+        printf("\n");
+        printf("Quantidade de PMs: ");
+        scanf("%d", &qtd_pms);
+        printf("\n");
+        printf("         SPM - Viatura Login          ");
 
-            if (qtd_pms < 2)
-                printf("\nAutorização negada poucos PMs\n");
-            else if (qtd_pms > 4)
-                printf("\nAutorizaçãoo negada muitos PMs\n");
+        if (qtd_pms < 2)
+            printf("\nAutorização negada poucos PMs\n");
+        else if (qtd_pms > 4)
+            printf("\nAutorizaçãoo negada muitos PMs\n");
 
-            else
+        else
+        {
+            printf("\n");
+            for (int i = 0; i < qtd_pms; i++)
             {
-                printf("\n");
-                for (int i = 0; i < qtd_pms; i++)
-                {
-                    printf("Identificação dos PM %d: ", i + 1);
-                    scanf(" %[^\n]", id_pm);
-                }
-                printf("         SPM - Viatura Estado Neutro        ");
-                printf("\n1 - Apto para atender ocorrencia");
-                printf("\n2 - Cancelar Embarcação");
-                printf("\nOpção: ");
-                scanf("%d", &op);
-                if (op == 1)
-                {
-                    printf("1");
-                }
-                if (op == 2)
-                    return;
+                printf("Identificação dos PM %d: ", i + 1);
+                scanf(" %[^\n]", id_pm);
             }
-        
+            printf("         SPM - Viatura Estado Neutro        ");
+            printf("\n1 - Apto para atender ocorrencia");
+            printf("\n2 - Cancelar Embarcação");
+            printf("\nOpção: ");
+            scanf("%d", &op);
+            if (op == 1)
+            {
+                printf("1");
+            }
+            if (op == 2)
+                return;
+        }
     }
 
     if (op == 2)
@@ -162,102 +160,137 @@ void menu_login_viatura()
                 {
                     printf("Viatura encontrada\n");
                     break;
-            
                 }
-                else{
+                else
+                {
                     printf("Viatura nãp é do tipo correto\n");
                 }
             }
-            
         }
-            printf("\n");
-            printf("Quantidade de PMs: ");
-            scanf("%d", &qtd_pms);
-            printf("\n");
-            printf("         SPM - Viatura Login          ");
+        printf("\n");
+        printf("Quantidade de PMs: ");
+        scanf("%d", &qtd_pms);
+        printf("\n");
+        printf("         SPM - Viatura Login          ");
 
-            if (qtd_pms != 4 )
-                printf("\nAutorizaçãoo negada necessita-se de EXATAMENTE 4 PMs\n");
+        if (qtd_pms != 4)
+            printf("\nAutorizaçãoo negada necessita-se de EXATAMENTE 4 PMs\n");
 
-            else
+        else
+        {
+            printf("\n");
+            for (int i = 0; i < qtd_pms; i++)
             {
-                printf("\n");
-                for (int i = 0; i < qtd_pms; i++)
-                {
-                    printf("Identificação dos PM %d: ", i + 1);
-                    scanf(" %[^\n]", id_pm);
-                }
-                printf("         SPM - Viatura Estado Neutro        ");
-                printf("\n1 - Apto para atender ocorrencia");
-                printf("\n2 - Cancelar Embarcacao");
-                printf("\nOpção: ");
-                scanf("%d", &op);
-                if (op == 1)
-                {
-                    printf("1");
-                }
-                if (op == 2)
-                    return;
+                printf("Identificação dos PM %d: ", i + 1);
+                scanf(" %[^\n]", id_pm);
             }
-        
+            printf("         SPM - Viatura Estado Neutro        ");
+            printf("\n1 - Apto para atender ocorrencia");
+            printf("\n2 - Cancelar Embarcacao");
+            printf("\nOpção: ");
+            scanf("%d", &op);
+            if (op == 1)
+            {
+                printf("1");
+            }
+            if (op == 2)
+                return;
+        }
     }
 }
 
-void menu_viatura_uso(){
+void menu_viatura_uso()
+{
 
     int id_viatura;
 
     printf("         SPM - Viatura Login          ");
     printf("Identificador da Viatura: ");
-    scanf("%d",&id_viatura);
-
-
+    scanf("%d", &id_viatura);
 }
 
+void menu_COPOM()
+{
 
-void menu_COPOM(){
-
-    int op,qtd_viaturas;
+    int op, qtd_viaturas;
     char descricao[MAX], localizacao[MAX];
 
     printf("         SPM - COPOM          ");
-    
+
     printf("\n1 - Policia Normal");
     printf("    2 - Policia Especializada: ");
-    scanf("%d",&op);
+    scanf("%d", &op);
 
     printf("\n");
     printf("Viaturas Necessárias: ");
-    scanf("%d",&qtd_viaturas);
+    scanf("%d", &qtd_viaturas);
 
     printf("\n");
     printf("Descrição: ");
-    scanf("%[^\n]",descricao);
+    scanf("%[^\n]", descricao);
 
     printf("\n");
     printf("Localização: ");
-    scanf("%[^\n]",localizacao);
+    scanf("%[^\n]", localizacao);
 
-    if(op == 1){
+    if (op == 1)
+    {
         fila_prioridade *inicio = NULL;
         fila_prioridade *fim = NULL;
 
-
         printf("1 - Prioridade\n");
         printf("2 - Não prioritária\n");
-        scanf("%d",&op);
-        if(op == 1)
+        scanf("%d", &op);
+        if (op == 1)
         {
-            enfilerar_prioridade(inicio,fim,descricao,localizacao);
+            enfilerar_prioridade(inicio, fim, descricao, localizacao);
         }
-
-        
-
     }
-
-
-
 }
 
+void login()
+{
+
+    char nome_guerra[MAX], username[MAX], cidade[MAX], patente[MAX],password[MAX];
+    int idade;
+
+    printf("         SPM - LOGIN         ");
+    printf("\n");
+
+    printf("Nome de Guerra: ");
+    scanf("%s", username);
+
+    FILE *arquivo = fopen("policiais.txt", "r");
+
+    if (arquivo == NULL)
+    {
+        printf("Erro ao acessar o Banco de dados\n");
+    }
+     else
+    {
+    
+        while (fscanf(arquivo, "%s", nome_guerra) == 1)
+        {
+            fscanf(arquivo, "%s", cidade);
+            fscanf(arquivo, "%d", &idade);
+            fscanf(arquivo, "%s", patente);
+            fscanf(arquivo, "%s", password);
+
+            if (strcmp(nome_guerra, username) == 0)
+            {
+
+                printf("%s\n", nome_guerra);
+                printf("%s\n", cidade);
+                printf("%d\n", idade);
+                printf("%s\n", patente);
+                printf("%s\n",password);
+
+                break;
+            }
+        }
 
 
+        fclose(arquivo);
+    }
+    
+}

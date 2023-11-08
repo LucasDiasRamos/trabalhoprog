@@ -25,6 +25,7 @@ void menu();
 void menu_login_viatura();
 void menu_viatura_uso();
 void menu_COPOM();
+void login();
 
 
 
