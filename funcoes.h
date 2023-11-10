@@ -3,13 +3,13 @@
 #include <stdlib.h>
 #define MAX 50
 
-
-struct fila_chamadas
+struct viaturas
 {
-    char *descricao;
-    char *localizacao;
-    struct fila_chamadas *prox;
+    int id;
+    char tipo;
+    struct viaturas *prox;
 };
+
 
 struct fila_prioridade
 {
@@ -28,9 +28,9 @@ void menu_COPOM();
 void login();
 
 
+void enfilerar(viaturas*&inicio,viaturas*&fim,int id_viatura,char tipo);
+
 
 void enfilerar_prioridade(fila_prioridade*&inicio,fila_prioridade*&fim,char *descricao , char *localizacao);
 void imprimir_prioridade(fila_prioridade*fila);
 
-void enfilerar(fila_chamadas*&inicio,fila_chamadas*&fim,char *descricao , char *localizacao);
-void imprimir(fila_chamadas*fila);

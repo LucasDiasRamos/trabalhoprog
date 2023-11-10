@@ -1,5 +1,27 @@
 #include "funcoes.h"
 
+void enfilerar(viaturas*&inicio,viaturas*&fim,int id_viatura,char tipo){
+    viaturas *nova;
+    
+    nova =(viaturas*)malloc(sizeof(viaturas));
+
+    nova->id = id_viatura;
+    nova->tipo = tipo;
+    nova->prox = NULL;
+
+    if(inicio == NULL)
+        inicio = fim = nova;
+
+    else{
+        fim->prox = nova;
+        fim = nova;
+    }
+
+
+}
+
+
+
 void enfilerar_prioridade(fila_prioridade*&inicio,fila_prioridade*&fim,char* descricao , char* localizacao){
     fila_prioridade *nova;
     
@@ -20,10 +42,10 @@ void enfilerar_prioridade(fila_prioridade*&inicio,fila_prioridade*&fim,char* des
 }
 
 
-void enfilerar(fila_chamadas*&inicio,fila_chamadas*&fim,char *descricao , char *localizacao){
-    fila_chamadas *nova;
+/*void enfilerar_chamadas(viaturas*&inicio,viaturas*&fim,char *descricao , char *localizacao){
+    viaturas *nova;
     
-    nova =(fila_chamadas*)malloc(sizeof(fila_chamadas));
+    nova =(viaturas*)malloc(sizeof(viaturas));
 
     nova->descricao = descricao;
     nova->localizacao = localizacao;
@@ -37,7 +59,7 @@ void enfilerar(fila_chamadas*&inicio,fila_chamadas*&fim,char *descricao , char *
     }
 
 
-}
+}*/
 
 
 void imprimir_prioridade(fila_prioridade*fila){

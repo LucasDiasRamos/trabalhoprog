@@ -60,144 +60,13 @@ void menu_login_viatura()
 
             printf("\nCódigo da Viatura: ");
             scanf("%d", &cod_viatura);
-
-            FILE *arquivo = fopen("viaturas.txt", "r");
-
-            if (arquivo == NULL)
-            {
-                printf("Erro ao encontrar a viatura no Banco de Dados\n");
-                return;
-            }
-            else
-            {
-                while (fscanf(arquivo, "%d %s", &cod_viatura_A, tipo_viatura) == 2)
-                {
-                    if (cod_viatura_A == cod_viatura && strcmp(tipo_viatura, "regular") == 0)
-                    {
-                        encontrado = 1;
-                        break;
-                    }
-                }
-
-                fclose(arquivo);
-
-                if (encontrado)
-                {
-                    printf("Viatura encontrada\n");
-                    break;
-                }
-                else
-                {
-                    printf("Viatura não é do tipo correto\n");
-                }
-            }
         }
-        printf("\n");
-        printf("Quantidade de PMs: ");
-        scanf("%d", &qtd_pms);
-        printf("\n");
-        printf("         SPM - Viatura Login          ");
 
-        if (qtd_pms < 2)
-            printf("\nAutorização negada poucos PMs\n");
-        else if (qtd_pms > 4)
-            printf("\nAutorizaçãoo negada muitos PMs\n");
-
-        else
-        {
-            printf("\n");
-            for (int i = 0; i < qtd_pms; i++)
-            {
-                printf("Identificação dos PM %d: ", i + 1);
-                scanf(" %[^\n]", id_pm);
-            }
-            printf("         SPM - Viatura Estado Neutro        ");
-            printf("\n1 - Apto para atender ocorrencia");
-            printf("\n2 - Cancelar Embarcação");
-            printf("\nOpção: ");
-            scanf("%d", &op);
-            if (op == 1)
-            {
-                printf("1");
-            }
-            if (op == 2)
-                return;
-        }
-    }
-
-    if (op == 2)
-    {
-        while (1)
-        {
-
-            printf("         SPM - Viatura Login          ");
-            printf("\n");
-
-            printf("\nCódigo da Viatura: ");
-            scanf("%d", &cod_viatura);
-
-            FILE *arquivo = fopen("viaturas.txt", "r");
-
-            if (arquivo == NULL)
-            {
-                printf("Erro ao encontrar a viatura no Banco de Dados\n");
-                return;
-            }
-            else
-            {
-                while (fscanf(arquivo, "%d %s", &cod_viatura_A, tipo_viatura) == 2)
-                {
-                    if (cod_viatura_A == cod_viatura && strcmp(tipo_viatura, "especializada") == 0)
-                    {
-                        encontrado = 1;
-                        break;
-                    }
-                }
-
-                fclose(arquivo);
-
-                if (encontrado)
-                {
-                    printf("Viatura encontrada\n");
-                    break;
-                }
-                else
-                {
-                    printf("Viatura nãp é do tipo correto\n");
-                }
-            }
-        }
-        printf("\n");
-        printf("Quantidade de PMs: ");
-        scanf("%d", &qtd_pms);
-        printf("\n");
-        printf("         SPM - Viatura Login          ");
-
-        if (qtd_pms != 4)
-            printf("\nAutorizaçãoo negada necessita-se de EXATAMENTE 4 PMs\n");
-
-        else
-        {
-            printf("\n");
-            for (int i = 0; i < qtd_pms; i++)
-            {
-                printf("Identificação dos PM %d: ", i + 1);
-                scanf(" %[^\n]", id_pm);
-            }
-            printf("         SPM - Viatura Estado Neutro        ");
-            printf("\n1 - Apto para atender ocorrencia");
-            printf("\n2 - Cancelar Embarcacao");
-            printf("\nOpção: ");
-            scanf("%d", &op);
-            if (op == 1)
-            {
-                printf("1");
-            }
-            if (op == 2)
-                return;
-        }
+            
     }
 }
+
+
 
 void menu_viatura_uso()
 {
@@ -251,7 +120,7 @@ void menu_COPOM()
 void login()
 {
 
-    char nome_guerra[MAX], username[MAX], cidade[MAX], patente[MAX],password[MAX];
+    char nome_guerra[MAX], username[MAX], cidade[MAX], patente[MAX], password[MAX];
     int idade;
 
     printf("         SPM - LOGIN         ");
@@ -266,9 +135,9 @@ void login()
     {
         printf("Erro ao acessar o Banco de dados\n");
     }
-     else
+    else
     {
-    
+
         while (fscanf(arquivo, "%s", nome_guerra) == 1)
         {
             fscanf(arquivo, "%s", cidade);
@@ -283,14 +152,40 @@ void login()
                 printf("%s\n", cidade);
                 printf("%d\n", idade);
                 printf("%s\n", patente);
-                printf("%s\n",password);
+                printf("%s\n", password);
 
                 break;
             }
         }
 
-
         fclose(arquivo);
     }
-    
+}
+
+void leitura_viatura(char *arquivo,viaturas*&viaturas)
+{
+    FILE *arq = fopen(arquivo, "r");
+
+    if (arq == NULL)
+    {
+        printf("Erro ao encontrar a viatura no Banco de Dados\n");
+        return;
+    }
+    else
+    {
+
+        int id_viatura;
+        char tipo[MAX];
+
+        while (feof(arq) == 0)
+        {
+            fscanf(arq, "%d", &id_viatura);
+            fscanf(arq, "%[^\n]",tipo);
+
+        }
+
+        
+    }
+
+    fclose(arq);
 }
